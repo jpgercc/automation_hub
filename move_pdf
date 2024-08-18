@@ -1,0 +1,38 @@
+import os
+import shutil
+
+# Caminhos das pastas
+source_folder = r'C:\Users\jpger\Downloads'
+destination_folder = r'C:\Users\jpger\OneDrive\Desktop\fds\pdf'
+
+# Verifica se a pasta de destino existe, se não, cria
+if not os.path.exists(destination_folder):
+    os.makedirs(destination_folder)
+
+# Percorre todos os arquivos na pasta de origem
+for filename in os.listdir(source_folder):
+    # Verifica se o arquivo tem a extensão .pdf
+    if filename.endswith('.pdf'):
+        # Caminho completo do arquivo de origem
+        source_file = os.path.join(source_folder, filename)
+        # Caminho completo do arquivo de destino
+        destination_file = os.path.join(destination_folder, filename)
+        # Copia o arquivo para a pasta de destino, preservando os metadados
+        shutil.copy2(source_file, destination_file)
+        print(f'Arquivo {filename} copiado com sucesso!')
+
+print('Todos os arquivos PDF foram copiados.')
+
+#SOBRE O COMANDO shutil.copy2
+
+# POSIX Platforms (como Linux e macOS):
+# Proprietário e Grupo: O dono e o grupo do arquivo não são preservados.
+# ACLs (Access Control Lists): Regras de controle de acesso mais detalhadas também são perdidas.
+# Mac OS:
+# Resource Fork: A parte dos metadados que armazena dados adicionais (como ícones e outros atributos específicos do aplicativo) não é copiada.
+# File Type e Creator Codes: Códigos específicos de tipo e criador do arquivo também não são preservados.
+# Windows:
+# Proprietários de Arquivos: A informação sobre o dono do arquivo não é preservada.
+# ACLs: As listas de controle de acesso (ACLs), que definem permissões detalhadas, não são copiadas.
+# Alternate Data Streams: Fluxos de dados alternativos associados aos arquivos também não são copiados.
+
