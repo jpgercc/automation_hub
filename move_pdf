@@ -1,23 +1,17 @@
 import os
 import shutil
 
-# Caminhos das pastas
-source_folder = r'C:\Users\jpger\Downloads'
-destination_folder = r'C:\Users\jpger\OneDrive\Desktop\fds\pdf'
+source_folder = r'caminho_origem'
+destination_folder = r'caminho_origem'
 
-# Verifica se a pasta de destino existe, se não, cria
-if not os.path.exists(destination_folder):
-    os.makedirs(destination_folder)
-
-# Percorre todos os arquivos na pasta de origem
 for filename in os.listdir(source_folder):
-    # Verifica se o arquivo tem a extensão .pdf
+    
     if filename.endswith('.pdf'):
-        # Caminho completo do arquivo de origem
+        
         source_file = os.path.join(source_folder, filename)
-        # Caminho completo do arquivo de destino
+        
         destination_file = os.path.join(destination_folder, filename)
-        # Copia o arquivo para a pasta de destino, preservando os metadados
+        # preservando os metadados
         shutil.copy2(source_file, destination_file)
         print(f'Arquivo {filename} copiado com sucesso!')
 
