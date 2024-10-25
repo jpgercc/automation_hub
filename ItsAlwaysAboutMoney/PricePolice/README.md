@@ -9,7 +9,6 @@
 <h3>Pipa aí:</h3>
 
 ```
-pip install requests
-pip install beautifulsoup4
+pip install requests beautifulsoup4 tk schedule
 ```
 
