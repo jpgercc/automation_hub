@@ -2,9 +2,9 @@
 # Price Police
 
 <h2>O que faz?</h2>
-<p>Verifica o preço de algum produto e avisa caso esteja abaixo do preço inserido na variavel "preco_alvo". <b>Porém</b> infelizmente não funciona direito, um dia eu arrumo, não prometo.</p>
+<p>Verifica o preço de algum produto e avisa com uma GUI caso esteja abaixo do preço inserido na variavel "preco_alvo".
 🇺🇸 :
-<p>Checks the price of a product and warns if it is below the price entered in the "preco_alvo"" variable. <b>However</b> unfortunately it doesn't work properly, one day I'll fix it, no promises.</p>
+<h2>What does it do?</h2> <p>Check the price of a product and notify with a GUI if it is below the price entered in the "target_price" variable.
 
 <h3>Pipa aí:</h3>
 

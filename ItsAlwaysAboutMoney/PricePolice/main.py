@@ -27,7 +27,7 @@ def obter_preco(produto_url):
         response.raise_for_status()  # Verifica erros HTTP
 
         soup = BeautifulSoup(response.text, 'html.parser')
-        # Ajuste para o site específico (Mercado Livre)
+        # Ajuste para o Mercado Livre
         preco_texto = soup.find('span', {'class': 'andes-money-amount__fraction'}).text
         preco = float(preco_texto.replace('R$', '').replace('.', '').replace(',', '.'))
         return preco
@@ -68,5 +68,5 @@ if __name__ == '__main__':
     preco_alvo = 1000.0
     produto = 'Terre d Hermes 200ml'
 
-    # Monitoramento configurado para rodar a cada 10 minutos
+    # Monitoramento configurado para rodar a cada x minutos
     configurar_monitoramento(produto_url, preco_alvo, produto, intervalo=0.1666667)
