@@ -17,6 +17,8 @@ for filename in os.listdir(source_folder):
 
 print('Todos os arquivos PDF foram copiados.')
 
+#!!!THIS CODE WAS ONLY TESTED IN PDFs!!!
+
 #SOBRE O COMANDO shutil.copy2
 
 # POSIX Platforms (como Linux e macOS):
