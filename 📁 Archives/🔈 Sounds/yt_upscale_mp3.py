@@ -1,3 +1,4 @@
+# !!! ONLY 4 CLASSICAL MUSIC AND JAZZ (codec and config for 'upscale') !!!
 import yt_dlp
 import os
 
