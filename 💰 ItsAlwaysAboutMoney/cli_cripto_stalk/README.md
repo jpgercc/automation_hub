@@ -1,13 +1,14 @@
-# Bitcoin Price Tracker 📈
+# Crypto Price Tracker 📈
 
-Script Python simples para monitorar o preço do Bitcoin em tempo real com gráfico ASCII e alertas sonoros.
+Script Python simples para monitorar o preço de qualquer criptomoeda em tempo real com gráfico ASCII e alertas sonoros.
 
 ## Funcionalidades
 
-- 💰 Preço atual do Bitcoin em USD
+- 💰 Preço atual de qualquer cripto em USD
 - 📊 Gráfico ASCII dos últimos 30 dias
-- 📈 Cálculo de variação percentual
-- 🔊 Alertas sonoros baseados no preço (opcional)
+- 📈 Cálculo de variação percentual desde preço de referência
+- 🔊 Alertas sonoros configuráveis (opcional)
+- 🎯 Fácil configuração - apenas 4 variáveis para trocar de moeda
 
 ## Instalação
 
@@ -15,39 +16,102 @@ Script Python simples para monitorar o preço do Bitcoin em tempo real com gráf
 pip install requests asciichartpy pygame
 ```
 
-## Uso Básico
+## Configuração Rápida
+
+Para trocar de criptomoeda, edite apenas estas 4 linhas no código:
+
+```python
+CRYPTO_ID = "bitcoin"           # ethereum, cardano, solana, etc.
+CRYPTO_SYMBOL = "BTC"           # ETH, ADA, SOL, etc.
+REFERENCE_PRICE = 106971        # Preço de referência
+REFERENCE_DATE = "junho"        # Data de referência
+```
+
+### Exemplos de Configuração:
+
+**Ethereum:**
+```python
+CRYPTO_ID = "ethereum"
+CRYPTO_SYMBOL = "ETH"
+REFERENCE_PRICE = 3500
+REFERENCE_DATE = "junho"
+```
+
+**Solana:**
+```python
+CRYPTO_ID = "solana"
+CRYPTO_SYMBOL = "SOL"
+REFERENCE_PRICE = 150
+REFERENCE_DATE = "junho"
+```
+
+**Cardano:**
+```python
+CRYPTO_ID = "cardano"
+CRYPTO_SYMBOL = "ADA"
+REFERENCE_PRICE = 0.45
+REFERENCE_DATE = "junho"
+```
+
+## Uso
 
 ```bash
-python bitcoin_tracker.py
+python crypto_tracker.py
 ```
 
 ## Configuração de Áudio (Opcional)
 
-Para habilitar alertas sonoros, edite o arquivo e configure o caminho dos áudios:
+Para habilitar alertas sonoros, configure o caminho dos áudios:
 
 ```python
-# Na função main(), descomente e configure:
+# Na função main(), edite:
 audio_directory = r"C:\caminho\para\seus\audios"
 ```
 
-### Arquivos de áudio necessários:
-- `waiting_sound.mp3` - Toca quando preço > $100,000
-- `cash_register.mp3` - Toca quando preço < $105,000
+### Sistema de Alertas Configurável:
+
+```python
+AUDIO_ALERT_RULES = [
+    {"threshold": 100000, "condition": ">", "file": "high_alert.mp3", "loops": 2},
+    {"threshold": 105000, "condition": "<", "file": "low_alert.mp3", "loops": 0},
+    # Adicione mais regras conforme necessário
+]
+```
+
+**Condições suportadas:**
+- `">"` - Maior que o threshold
+- `"<"` - Menor que o threshold  
+- `"="` - Igual ao threshold (com tolerância)
 
 ## Exemplo de Saída
 
 ```
-Bitcoin vendido em junho por: $106,971 USD
+BTC em junho: $106,971.00 USD
 
-Preço atual do Bitcoin (BTC): $98,450 USD
+Preço atual do BTC: $98,450.00 USD
 Variação desde junho: 📉 -7.96%
 
-Gráfico do Bitcoin (últimos 30 dias):
+Gráfico do BTC (últimos 30 dias):
     98,450.00 ┤        ╭─╮
     95,230.00 ┤    ╭───╯ ╰╮
     92,010.00 ┤  ╭─╯      ╰─╮
     88,790.00 ┼──╯          ╰───
 ```
+
+## Criptomoedas Suportadas
+
+Qualquer criptomoeda da [CoinGecko API](https://www.coingecko.com/en/api). Exemplos de IDs populares:
+
+- `bitcoin` - Bitcoin
+- `ethereum` - Ethereum
+- `cardano` - Cardano
+- `solana` - Solana
+- `binancecoin` - BNB
+- `ripple` - XRP
+- `polkadot` - Polkadot
+- `chainlink` - Chainlink
+- `litecoin` - Litecoin
+- `dogecoin` - Dogecoin
 
 ## API Utilizada
 
@@ -58,3 +122,11 @@ Gráfico do Bitcoin (últimos 30 dias):
 - Python 3.6+
 - Conexão com internet
 - Terminal com suporte UTF-8 (recomendado)
+
+## Recursos Extras
+
+- ✅ Formatação automática de preços (adapta para moedas baratas)
+- ✅ Tratamento de erros robusto
+- ✅ Limpeza automática da tela
+- ✅ Suporte a qualquer moeda da CoinGecko
+- ✅ Sistema de alertas flexível
