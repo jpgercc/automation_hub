@@ -154,8 +154,8 @@ class CryptoTracker:
 
 def main():
     # Configure o caminho para seus arquivos de áudio aqui (opcional)
-    audio_directory = r"C:\Users\x\Music"
-    # audio_directory = None
+    # audio_directory = r"C:\Users\x\Music"
+    audio_directory = None
     
     tracker = CryptoTracker(audio_directory)
     tracker.run()
