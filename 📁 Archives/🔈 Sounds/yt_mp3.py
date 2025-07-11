@@ -1,7 +1,7 @@
 import yt_dlp
 import os
 
-def baixar_musica(link):
+def baixar_musica(link, caminho_destino):
     # Configurações para baixar apenas o vídeo específico, mesmo se for parte de uma playlist
     opcoes = {
         'format': 'bestaudio/best',  # Melhor qualidade de áudio disponível
@@ -12,7 +12,7 @@ def baixar_musica(link):
                 'preferredquality': '320',  # Qualidade máxima do MP3
             }
         ],
-        'outtmpl': '%(title)s.%(ext)s',  # Nome do arquivo de saída
+        'outtmpl': os.path.join(caminho_destino, '%(title)s.%(ext)s'),  # Caminho do diretório de saída
         'quiet': False,  # Exibe o progresso no terminal
         'noplaylist': True,  # Garante que apenas o vídeo especificado será baixado
     }
@@ -22,9 +22,13 @@ def baixar_musica(link):
             print(f"Baixando música do link: {link}")
             ydl.download([link])
             print("Download concluído!")
+            # Executa o comando para abrir o diretório no Nautilus
+            os.system(f"nautilus {caminho_destino}")
     except Exception as e:
         print(f"Ocorreu um erro: {e}")
 
 if __name__ == "__main__":
     link = input("Digite o link do YouTube (apenas o vídeo desejado): ")
-    baixar_musica(link)
+    caminho_destino = "."  # Caminho para o diretório onde você quer salvar
+    baixar_musica(link, caminho_destino)
+

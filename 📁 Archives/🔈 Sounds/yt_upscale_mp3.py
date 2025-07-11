@@ -1,8 +1,10 @@
-# !!! ONLY 4 CLASSICAL MUSIC AND JAZZ (codec and config for 'upscale') !!!
 import yt_dlp
 import os
 
 def baixar_e_melhorar_musica(link):
+    # Caminho completo para a pasta Música no diretório do usuário
+    pasta_destino = os.path.expanduser('~/Música')
+    
     # Configurações para baixar apenas o áudio do vídeo
     opcoes = {
         'format': 'bestaudio/best',  # Melhor qualidade de áudio disponível
@@ -13,7 +15,7 @@ def baixar_e_melhorar_musica(link):
                 'preferredquality': '320',  # Qualidade máxima do MP3
             }
         ],
-        'outtmpl': '%(title)s.%(ext)s',  # Nome do arquivo de saída
+        'outtmpl': os.path.join(pasta_destino, '%(title)s.%(ext)s'),  # Nome do arquivo de saída com caminho completo
         'quiet': False,  # Exibe o progresso no terminal
         'noplaylist': True,  # Garante que apenas o vídeo especificado será baixado
     }
