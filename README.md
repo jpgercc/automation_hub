@@ -1,7 +1,7 @@
 # 🛠️ Automation Hub
 ![output-onlinegiftools-ezgif com-resize](https://github.com/user-attachments/assets/6c168326-c751-4078-8732-cc65a7e3fead)
 
-Welcome to **Automation Hub**! A collection of diverse and powerful automations designed to make life easier, processes faster, and workflows smarter.  
+Welcome to **Automation Hub**! A collection of diverse automations designed to make life easier, processes faster and workflows smarter.  
 This repository gathers scripts, tools, and utilities for everything from system administration and data processing to creative experiments and personal productivity hacks.
 
 Whether you're looking for inspiration, ready-to-use scripts, or just curious about automation, you'll find something useful here.
