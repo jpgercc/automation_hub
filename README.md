@@ -10,11 +10,14 @@ Whether you're looking for inspiration, ready-to-use scripts, or just curious ab
 
 ## ✨ Highlights & Favorite Projects
 
-### ✅ [Smart File Organizer](./smart-file-organizer)
-Automatically sorts files into categorized folders based on file type, date, or custom rules. Perfect for keeping downloads and work directories clean.
+### ✅ [Voice Controll](%F0%9F%94%81%20AutoAuto/voice_control/README.md)
+Initiate scripts with your voice.
 
-### ✅ [Web Scraper Wizard](./web-scraper-wizard)
-A flexible Python scraper that extracts structured data from websites with ease. Includes built-in CSV/JSON export options.
+### ✅ [Video to Gif](📁%20Archives/⚙%EF%B8%8F%20Convert/video_to_gif/video_to_gif.py)
+Turn your videos into gifs!
+
+### ✅ [Web Scraper Wizard](💰%20Cash/cli_cripto_stalk_audio)
+Sometimes it's ok to be a stalker, stalk your cryptos with fashion ASCII graphs!
 
 ---
 
