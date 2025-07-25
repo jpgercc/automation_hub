@@ -18,6 +18,8 @@ This Python script provides automation for Gmail using the Gmail API. It include
 
 ## Setup
 
+[(API Setup](https://developers.google.com/workspace/gmail/api/quickstart/python?hl=pt-br)
+
 1. Enable the Gmail API in your Google Cloud Console.
 2. Download the `credentials.json` file and place it in the same directory as the script.
 3. Install the required Python packages:
