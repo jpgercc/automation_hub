@@ -13,6 +13,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Constantes
 SALES_URL = 'https://myaccount.mercadolivre.com.br/sales/list#menu-user'
+PRODUCTS_URL = 'https://docs.google.com/spreadsheets/d/1zX_Om3d14lmBNgtKrjJCE3ElGSzfOph8FzwEZ8LmcWc/edit?usp=sharing'
 TEMP_MP3 = 'temp_audio.mp3'
 CITY = 'Porto Alegre'
 WEATHER_URL = f'https://wttr.in/{CITY}?format=%C+%t'
@@ -21,7 +22,8 @@ async def abre_vendas():
     try:
         logging.info("Abrindo o navegador...")
         webbrowser.open(SALES_URL)
-        logging.info("Navegador aberto e página de vendas acessada.")
+        webbrowser.open(PRODUCTS_URL)
+        logging.info("Navegador aberto e páginas acessadas.")
     except Exception as e:
         logging.error(f"Erro ao abrir o navegador: {e}")
 # OPÇÕES DE VOZ:
@@ -129,10 +131,15 @@ async def main():
             f"{greeting} John, I hope you're having a great day... "
             f"Today is {current_date}. It is {current_time}. "
             f"The weather is {weather_info}... "
-            f"I'll now open your browser on your sales page."
+            f"I'll now open your sales pages on your browser to kickstart your day."
         )
+        # Reproduz o áudio e aguarda sua conclusão antes de abrir vendas
         await speak(text_to_speak)
+
+        # Garante que abre_vendas seja executado após o áudio
         await abre_vendas()
+
+        # Fala texto final após abrir vendas
         await speak("There you go, have a productive day!")
     except Exception as e:
         logging.error(f"Erro na execução do programa: {e}")
