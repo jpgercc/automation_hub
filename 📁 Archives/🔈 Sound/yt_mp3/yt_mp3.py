@@ -1,34 +1,39 @@
 import yt_dlp
 import os
 
-def baixar_musica(link, caminho_destino):
-    # Configurações para baixar apenas o vídeo específico, mesmo se for parte de uma playlist
+def baixar_musica(link):
+    # Caminho para a pasta de Músicas do usuário
+    pasta_musicas = os.path.join(os.path.expanduser("~"), "Music")
+    os.makedirs(pasta_musicas, exist_ok=True)
+
+    # Caminho onde você extraiu o ffmpeg
+    caminho_ffmpeg = r'C:\ffmpeg\bin'  # <-- ajuste se estiver em outro local
+
+    # Configurações do yt-dlp
     opcoes = {
-        'format': 'bestaudio/best',  # Melhor qualidade de áudio disponível
+        'format': 'bestaudio/best',
+        'ignoreerrors': True,
         'postprocessors': [
-            {  # Converte o áudio para MP3 após o download
+            {
                 'key': 'FFmpegExtractAudio',
                 'preferredcodec': 'mp3',
-                'preferredquality': '320',  # Qualidade máxima do MP3
+                'preferredquality': '320',
             }
         ],
-        'outtmpl': os.path.join(caminho_destino, '%(title)s.%(ext)s'),  # Caminho do diretório de saída
-        'quiet': False,  # Exibe o progresso no terminal
-        'noplaylist': True,  # Garante que apenas o vídeo especificado será baixado
+        'outtmpl': os.path.join(pasta_musicas, '%(title)s.%(ext)s'),
+        'quiet': False,
+        'noplaylist': False,  # <-- aqui muda para False para permitir playlists
+        'ffmpeg_location': caminho_ffmpeg,  # <-- aqui adiciona o caminho do ffmpeg
     }
 
     try:
         with yt_dlp.YoutubeDL(opcoes) as ydl:
             print(f"Baixando música do link: {link}")
             ydl.download([link])
-            print("Download concluído!")
-            # Executa o comando para abrir o diretório no Nautilus
-            os.system(f"nautilus {caminho_destino}")
+            print(f"Download concluído! Arquivo salvo em: {pasta_musicas}")
     except Exception as e:
         print(f"Ocorreu um erro: {e}")
 
 if __name__ == "__main__":
     link = input("Digite o link do YouTube (apenas o vídeo desejado): ")
-    caminho_destino = "."  # Caminho para o diretório onde você quer salvar
-    baixar_musica(link, caminho_destino)
-
+    baixar_musica(link)
