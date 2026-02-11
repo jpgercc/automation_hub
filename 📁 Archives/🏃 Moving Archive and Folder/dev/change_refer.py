@@ -1,6 +1,6 @@
 import os
 from bs4 import BeautifulSoup # Requer: pip install beautifulsoup4 (R$ 0,00)
-
+enviei versaoaerrada cu
 # ================= CONFIGURAÇÃO (Fácil Acesso) =================
 TRECHO_ANTIGO = 'assets/css/styles.css'
 TRECHO_NOVO   = '/assets/css/styles.css'
@@ -53,4 +53,5 @@ def iniciar():
                     processar_arquivo(caminho_total)
 
 if __name__ == "__main__":
+
     iniciar()
